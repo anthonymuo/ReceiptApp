@@ -201,7 +201,6 @@ class Product:
             LeftBodyFrame, font=("arial", 20, "bold"), textvariable=date_time, width=30
         )
         self.shopped_line_items.grid(row=5, column=1, sticky=W)
-
         ###################################################################
         self.pad_space = Label(
             LeftBodyFrame,
@@ -221,14 +220,12 @@ class Product:
             pady=2,
         )
         self.pad_space.grid(row=8, column=1, sticky=W)
-
         self.pad_space = Label(
             LeftBodyFrame,
             padx=2,
             pady=2,
         )
         self.pad_space.grid(row=9, column=1, sticky=W)
-
         self.pad_space = Label(
             LeftBodyFrame,
             padx=2,
@@ -236,8 +233,71 @@ class Product:
         )
         self.pad_space.grid(row=10, column=1, sticky=W)
 
+        # scroll Bar
+        scroll = Scrollbar(RightBodyFrame)
+        scroll.grid(row=0, column=1, sticky="ns")
 
-########################
+        productList = Listbox(
+            RightBodyFrame,
+            width=40,
+            height=16,
+            font=("arial", 12, "bold"),
+            yscrollcommand=scroll.set,
+        )
+        productList.grid(row=0, column=0, padx=8)
+        scroll.config(command=productList.yview)
+
+        # #################add buttons to operations Frame #############################
+        self.buttonBrowse = Button(
+            OperationFrame,
+            text="Browse",
+            font=("arial", 20, "bold"),
+            height=1,
+            width="10",
+            bd=4,
+        )
+        self.buttonBrowse.grid(row=0, column=0)
+
+        self.buttonSaveText = Button(
+            OperationFrame,
+            text="Save Text",
+            font=("arial", 20, "bold"),
+            height=1,
+            width="10",
+            bd=4,
+        )
+        self.buttonSaveText.grid(row=0, column=1)
+
+        self.buttonSaveImage = Button(
+            OperationFrame,
+            text="Save Image",
+            font=("arial", 20, "bold"),
+            height=1,
+            width="10",
+            bd=4,
+        )
+        self.buttonSaveImage.grid(row=0, column=2)
+
+        self.buttonTakephoto = Button(
+            OperationFrame,
+            text="Take photo",
+            font=("arial", 20, "bold"),
+            height=1,
+            width="10",
+            bd=4,
+        )
+        self.buttonTakephoto.grid(row=0, column=3)
+
+        self.buttonCopyText = Button(
+            OperationFrame,
+            text="Copy Text",
+            font=("arial", 20, "bold"),
+            height=1,
+            width="10",
+            bd=4,
+        )
+        self.buttonCopyText.grid(row=0, column=4)
+
 
 # call the main
 if __name__ == "__main__":
