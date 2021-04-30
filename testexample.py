@@ -6,13 +6,13 @@ from PIL import Image, ImageTk
 import os
 
 
-def readTxt1():
-    fln = filedialog.askopenfilename(
-        initialdir=os.getcwd(),
-        title="select Image File",
-        filetype=(("JPG file", "*.jpg"), ("PNG file", "*.png"), ("All Files", "*.*")),
-    )
-    t1.set(fln)
+# def readTxt1():
+#     fln = filedialog.askopenfilename(
+#         initialdir=os.getcwd(),
+#         title="select Image File",
+#         filetype=(("JPG file", "*.jpg"), ("PNG file", "*.png"), ("All Files", "*.*")),
+#     )
+#     t1.set(fln)
 
 
 # creat showimage function
@@ -31,9 +31,9 @@ def showimage():
 
     #  Get OCR output using Pytesseract
     custom_config = r"--oem 3 --psm 6"
-    txt3.delete("1.0", "end")
+    txt2.delete("1.0", "end")
     # txt2 = pytesseract.image_to_string(Image.open(fln), config=custom_config)
-    txt3.insert(
+    txt2.insert(
         INSERT, pytesseract.image_to_string(Image.open(fln), config=custom_config)
     )
 
@@ -44,21 +44,21 @@ t1 = StringVar()
 wrapper = LabelFrame(root, text="Choose File")
 wrapper.pack(fill="both", expand="yes", padx=10, pady=10)
 
-wrapper2 = LabelFrame(root, text="Receipt Image ")
+lbl = Label(root)
+lbl.pack(side=tk.LEFT, padx=10, pady=10)
+
+wrapper2 = LabelFrame(root, text="Image Text")
 wrapper2.pack(fill="both", expand="yes", padx=10, pady=10)
 
+txt = Entry(wrapper, textvariable=t1)
+txt.pack(side=tk.RIGHT, padx=10, pady=10)
 
-lbl = Label(root)
-lbl.pack()
-
-wrapper3 = LabelFrame(root, text="Image Text")
+wrapper3 = LabelFrame(root, text="Receipt Data")
 wrapper3.pack(fill="both", expand="yes", padx=10, pady=10)
 
-txt = Entry(wrapper, textvariable=t1)
-txt.pack(side=tk.LEFT, padx=10, pady=10)
 
-btn = Button(wrapper, text="Browse", command=readTxt1)
-btn.pack(side=tk.LEFT, padx=10, pady=10)
+# btn = Button(wrapper, text="Browse", command=readTxt1)
+# btn.pack(side=tk.LEFT, padx=10, pady=10)
 
 btn2 = Button(wrapper, text="Exit", command=lambda: exit())
 btn2.pack(side=tk.LEFT, padx=10, pady=10)
@@ -66,13 +66,11 @@ btn2.pack(side=tk.LEFT, padx=10, pady=10)
 btn3 = Button(wrapper, text="Browse Image", command=showimage)
 btn3.pack(side=tk.LEFT, padx=10, pady=10)
 
-
-# txt2 = Text(wrapper2)
-# txt2.pack(padx=10, pady=10)
+txt2 = Text(wrapper2)
+txt2.pack(padx=10, pady=10)
 
 txt3 = Text(wrapper3)
 txt3.pack(padx=10, pady=10)
-
 
 root.geometry("900x650")
 # root.title("text reader")
