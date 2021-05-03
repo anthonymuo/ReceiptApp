@@ -241,8 +241,8 @@ def showimage():
     txt3.delete("1.0", "end")
     txt3.insert(INSERT, receipt_headers, shopped_line_items)
 
-    txt4.delete("1.0", "end")
-    txt4.insert(INSERT, receipt_headers)
+    # txt4.delete("1.0", "end")
+    # txt4.insert(INSERT, shop, date_time, total_cost, shopped_line_items)
 
     # print(all_line_items)
     # print(costs)
@@ -253,6 +253,7 @@ def showimage():
 
 
 ############################# Tkinter GUI for displayin the actions to custumers#####################################
+
 root = Tk()
 
 t1 = StringVar()
@@ -274,14 +275,23 @@ wrapper3.pack(side=tk.RIGHT, fill="both", expand="yes", padx=10, pady=10)
 wrapper4 = LabelFrame(root, text="Receipt Data")
 wrapper4.pack(side=tk.LEFT, fill="both", expand="yes", padx=10, pady=10)
 
+# # browse button
+btn1 = Button(wrapper, bg="#20bebe", fg="white", text="Browse Image", command=showimage)
+# btn1.pack(side=tk.LEFT, padx=10, pady=10)
+btn1.place(x=30, y=10)
+
+
+btn2 = Button(
+    wrapper, bg="#20bebe", fg="white", text="......Exit.......", command=lambda: exit()
+)
+# btn2.pack(side=tk.LEFT, padx=10, pady=10)
+btn2.place(x=130, y=10)
+
+
 # btn = Button(wrapper, text="Browse", command=readTxt1)
 # btn.pack(side=tk.LEFT, padx=10, pady=10)
-
-btn2 = Button(wrapper, text="Exit", command=lambda: exit())
-btn2.pack(side=tk.LEFT, padx=10, pady=10)
-
-btn3 = Button(wrapper, text="Browse Image", command=showimage)
-btn3.pack(side=tk.LEFT, padx=10, pady=10)
+btn3 = Button(wrapper, bg="#20bebe", fg="white", text="Button 3")
+btn3.place(x=230, y=10)
 
 txt2 = Text(wrapper2)
 txt2.pack(padx=10, pady=10)
@@ -290,9 +300,24 @@ txt3 = Text(wrapper3)
 txt3.pack(padx=10, pady=10)
 
 txt4 = Text(wrapper4)
-txt4.pack(padx=10, pady=10)
+txt4.pack()
 
-root.geometry("900x650")
-# root.title("text reader")
+# # browse button
+# browse_text = tk.StringVar()
+# browse_btn = tk.Button(
+#     root,
+#     textvariable=browse_text,
+#     # command=lambda: open_file(),
+#     font="Raleway",
+#     bg="#20bebe",
+#     fg="white",
+#     height=2,
+#     width=15,
+# )
+# browse_text.set("Browse")
+# browse_btn.grid(column=1, row=2)
+
+root.geometry("960x650")
+root.title("UK Supermarket Receipt App")
 root.resizable(False, False)
 root.mainloop()
